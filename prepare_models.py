@@ -27,10 +27,21 @@ def preprocess_text(text):
     text = re.sub(r'\s+', ' ', text)  # Replace multiple spaces with a single space
     text = re.sub(r'\W', ' ', text)   # Replace all non-word characters with a space
     tokens = word_tokenize(text)
-    tokens = [word for word in tokens if word not in stopwords.words('english') and word.isalpha()]
+    
+    filtered_tokens = []
+    stop_words = set(stopwords.words('english'))
+    
+    for word in tokens:
+        if word not in stop_words and word.isalpha():
+            filtered_tokens.append(word)
+    
     lemmatizer = WordNetLemmatizer()
-    tokens = [lemmatizer.lemmatize(word) for word in tokens]
-    return tokens
+    lemmatized_tokens = []
+    
+    for word in filtered_tokens:
+        lemmatized_tokens.append(lemmatizer.lemmatize(word))
+    
+    return lemmatized_tokens
 
 # Build n-gram model function with progress tracking
 def build_ngram_model(tokens, n):
