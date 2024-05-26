@@ -19,7 +19,7 @@ def remove_repetitions(text):
 
 def complete_sentence(input_text):
     input_ids = tokenizer.encode(input_text, return_tensors='pt')
-    max_length = len(input_ids[0]) + 16  # Adjust the max_length as needed
+    max_length = len(input_ids[0]) + 10  # Adjust the max_length as needed
 
     # Generate text with adjusted parameters
     outputs = model.generate(
@@ -31,10 +31,10 @@ def complete_sentence(input_text):
         top_p=0.95,  # Nucleus sampling
         pad_token_id=tokenizer.eos_token_id
     )
-    
+
     # Decode the output
     generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    
+
     # Extract the generated part only
     generated_part = generated_text[len(input_text):].strip()
 
@@ -54,10 +54,10 @@ def autocomplete():
     input_text = data['word']
 
     generated_text = complete_sentence(input_text)
-    
+
     print(f"Processed input word: {input_text}")
     print(f"Generated text: {generated_text}")
-    
+
     return jsonify({'generated_text': generated_text})
 
 if __name__ == '__main__':
