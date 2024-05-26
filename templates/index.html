@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sentence Autocomplete Bot</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 40px 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .form-group {
+            margin-top: 20px;
+        }
+        .btn {
+            margin-top: 20px;
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 18px;
+            color: #007bff;
+        }
+        h1 {
+            margin-bottom: 10px;
+        }
+        h4 {
+            margin-bottom: 30px;
+        }
+    </style>
+    <script>
+        async function getNextWord() {
+            const word = document.getElementById('word').value.trim();
+            const resultContainer = document.getElementById('prediction');
+            resultContainer.innerHTML = '';  // Clear previous results
+
+            if (word) {
+                const response = await fetch('/autocomplete', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ word: word })
+                });
+                const data = await response.json();
+                resultContainer.innerHTML = '<strong>Generated text:</strong> ' + (data.generated_text || 'Not found');
+            } else {
+                resultContainer.innerHTML = 'Please enter a word.';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Autocomplete Bot</h1>
+        <h4 class="text-center">Built by Evan Chen and RAISO Spring '24</h4>
+        <div class="form-group">
+            <input type="text" class="form-control" id="word" placeholder="Enter a word or phrase" />
+        </div>
+        <button class="btn btn-primary btn-block" onclick="getNextWord()">Generate Sentence</button>
+        <p id="prediction" class="result"></p>
+    </div>
+</body>
+</html>
