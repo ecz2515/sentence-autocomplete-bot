@@ -1,6 +1,6 @@
 # Sentence Autocomplete Bot
 
-This project is a sentence autocomplete bot built using Flask and leverages the GPT-2 model from the Hugging Face `transformers` library to predict and complete sentences based on user input. It's designed to showcase the integration of advanced NLP models in web applications for generating text predictions.
+This project is a sentence autocomplete bot built using Flask and leverages the GPT-2 model from the Hugging Face `transformers` library to predict and complete sentences based on user input. The bot uses a variety of text preprocessing methods such as tokenization and padding to generate accurate and contextually relevant predictions. The web interface is built using Bootstrap for a modern look and feel.
 
 ## Features
 
