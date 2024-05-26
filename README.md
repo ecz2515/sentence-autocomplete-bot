@@ -24,6 +24,7 @@ Clone the repository to your local machine using the following command:
 ```bash
 git clone https://github.com/yourusername/sentence-autocomplete-bot.git
 cd sentence-autocomplete-bot
+```
 
 ### Step 2: Install dependencies
 
@@ -31,6 +32,7 @@ Install the required Python packages using pip:
 
 ```bash
 pip install -r requirements.txt
+```
 
 ### Step 3: Prepare models
 
@@ -38,6 +40,7 @@ Before running the application, you need to prepare the models. This involves lo
 
 ```bash
 python prepare_models.py
+```
 
 ### Step 4: Run the Application
 
@@ -45,6 +48,7 @@ Once the models are prepared, you can run the Flask application using the follow
 
 ```bash
 python3 app.py
+```
 
 ### Step 5: Access the Application
 
