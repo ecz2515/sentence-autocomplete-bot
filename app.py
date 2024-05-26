@@ -19,7 +19,7 @@ def remove_repetitions(text):
 
 def complete_sentence(input_text):
     input_ids = tokenizer.encode(input_text, return_tensors='pt')
-    max_length = len(input_ids[0]) + 15  # Adjust the max_length as needed
+    max_length = len(input_ids[0]) + 16  # Adjust the max_length as needed
 
     # Generate text with adjusted parameters
     outputs = model.generate(
