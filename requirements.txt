@@ -1,6 +1,6 @@
 Flask==2.0.1
 transformers==4.9.2
-torch==1.9.0
+torch==2.2.0
 tqdm==4.62.2
 nltk==3.6.2
 gunicorn==20.1.0
